@@ -1,0 +1,56 @@
+import { Store } from "vuex";
+import createPersistedState from "vuex-persistedstate";
+
+const store = new Store({
+  state: {
+    orderStep: 1,
+    displayOrderNav: 0, // Order navigator bar visibility
+
+    // Order information data
+    order: [
+      { orderStartTime: '', orderEndTime: '', vehicleId: '', vehicleType: '', vehicleModel: '', vehicleSrc: '', customerId: '' }
+    ]
+  },
+  getters: {
+  },
+  plugins: [createPersistedState()],
+  mutations: {
+    //Toggle navigator bar visibility: 1 is on 2 is off
+    setOrderNav(state, payload) {
+      state.displayOrderNav = payload
+    },
+
+    // Order data setters
+    SET_ORDER_STEP: (state, orderStep) => {
+      state.orderStep = orderStep;
+    },
+    SET_ORDER_START_TIME: (state, orderStartTime) => {
+      state.order.orderStartTime = orderStartTime;
+    },
+    SET_ORDER_END_TIME: (state, orderEndTime) => {
+      state.order.orderEndTime = orderEndTime;
+    },
+    SET_ORDER_VEHICLE_ID: (state, vehicleId) => {
+      state.order.vehicleId = vehicleId;
+    },
+    SET_ORDER_VEHICLE_TYPE: (state, vehicleType) => {
+      state.order.vehicleType = vehicleType;
+    },
+    SET_ORDER_VEHICLE_MODEL: (state, vehicleModel) => {
+      state.order.vehicleModel = vehicleModel;
+    },
+    SET_ORDER_VEHICLE_SRC: (state, vehicleSrc) => {
+      state.order.vehicleSrc = vehicleSrc;
+    },
+    SET_ORDER_CUSTOMER_ID: (state, customerId) => {
+      state.order.customerId = customerId;
+    }
+  },
+  actions: {
+  },
+  modules: {
+  }
+
+});
+
+export default store
